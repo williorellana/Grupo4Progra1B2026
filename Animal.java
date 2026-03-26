@@ -1,19 +1,24 @@
 package zoologico;
 
 /**
+ *
+ * @author willi
+ */
+
+/**
  * Clase base que representa un animal del Zoológico La Aurora.
  * Aplica encapsulamiento con atributos privados y métodos polimórficos.
  */
 public abstract class Animal {
 
-    // ── Atributos privados (encapsulamiento) ──────────────────────
+    // Atributos
     private String nombre;
     private String especie;
     private int    edad;
     private double peso;          // en libras
     private double consumoDiario; // libras por día
 
-    // ── Constructor ───────────────────────────────────────────────
+    // Constructor
     public Animal(String nombre, String especie, int edad, double peso, double consumoDiario) {
         this.nombre       = nombre;
         this.especie      = especie;
@@ -22,25 +27,19 @@ public abstract class Animal {
         this.consumoDiario = consumoDiario;
     }
 
-    // ── Getters ───────────────────────────────────────────────────
+    // Getters
     public String getNombre()        { return nombre; }
     public String getEspecie()       { return especie; }
     public int    getEdad()          { return edad; }
     public double getPeso()          { return peso; }
     public double getConsumoDiario() { return consumoDiario; }
 
-    // ── Métodos abstractos (Polimorfismo) ─────────────────────────
+    // Polimorfismo
     public abstract String getTipoAnimal();
     public abstract String getTipoDieta();
     public abstract String getSonido();
     public abstract String getHabitat();
 
-    /**
-     * Calcula el alimento total consumido en X días usando RECURSIVIDAD.
-     *
-     * @param dias Número de días a calcular.
-     * @return Total de libras consumidas.
-     */
     public double calcularAlimento(int dias) {
         if (dias <= 0) {
             return 0.0;
