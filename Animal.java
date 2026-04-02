@@ -5,10 +5,6 @@ package zoologico;
  * @author willi
  */
 
-/**
- * Clase base que representa un animal del Zoológico La Aurora.
- * Aplica encapsulamiento con atributos privados y métodos polimórficos.
- */
 public abstract class Animal {
 
     // Atributos
@@ -20,19 +16,19 @@ public abstract class Animal {
 
     // Constructor
     public Animal(String nombre, String especie, int edad, double peso, double consumoDiario) {
-        this.nombre       = nombre;
-        this.especie      = especie;
-        this.edad         = edad;
-        this.peso         = peso;
+        this.nombre = nombre;
+        this.especie = especie;
+        this.edad = edad;
+        this.peso = peso;
         this.consumoDiario = consumoDiario;
     }
 
     // Getters
-    public String getNombre()        { return nombre; }
-    public String getEspecie()       { return especie; }
-    public int    getEdad()          { return edad; }
-    public double getPeso()          { return peso; }
-    public double getConsumoDiario() { return consumoDiario; }
+    public String getNombre(){return nombre;}
+    public String getEspecie(){return especie;}
+    public int    getEdad(){return edad;}
+    public double getPeso(){ return peso;}
+    public double getConsumoDiario(){return consumoDiario;}
 
     // Polimorfismo
     public abstract String getTipoAnimal();
@@ -40,14 +36,14 @@ public abstract class Animal {
     public abstract String getSonido();
     public abstract String getHabitat();
 
-    public double calcularAlimento(int dias) {
-        if (dias <= 0) {
+    public double calcularAlimento(int dias){
+        if(dias <= 0) {
             return 0.0;
         }
         return consumoDiario + calcularAlimento(dias - 1);
     }
 
-    /**
+    /*
      * Retorna los datos básicos del animal en formato legible.
      */
     @Override
@@ -62,19 +58,19 @@ public abstract class Animal {
             "  %-22s: %s\n"  +
             "  %-22s: %s\n"  +
             "  %-22s: %.2f lb/día",
-            "Tipo",            getTipoAnimal(),
-            "Nombre",          nombre,
-            "Especie",         especie,
-            "Edad",            edad,
-            "Peso",            peso,
-            "Dieta",           getTipoDieta(),
-            "Hábitat",         getHabitat(),
-            "Sonido",          getSonido(),
-            "Consumo diario",  consumoDiario
+            "Tipo", getTipoAnimal(),
+            "Nombre", nombre,
+            "Especie", especie,
+            "Edad", edad,
+            "Peso", peso,
+            "Dieta", getTipoDieta(),
+            "Hábitat", getHabitat(),
+            "Sonido", getSonido(),
+            "Consumo diario", consumoDiario
         );
     }
 
-    /**
+    /*
      * Retorna una fila CSV con los datos del animal.
      * Las subclases deben extender este método.
      */
