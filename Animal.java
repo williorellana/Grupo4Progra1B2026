@@ -57,14 +57,14 @@ public abstract class Animal {
             "  %-22s: %s\n"  +
             "  %-22s: %s\n"  +
             "  %-22s: %s\n"  +
-            "  %-22s: %.2f lb/día",
+            "  %-22s: %.2f lb/dia",
             "Tipo", getTipoAnimal(),
             "Nombre", nombre,
             "Especie", especie,
             "Edad", edad,
             "Peso", peso,
             "Dieta", getTipoDieta(),
-            "Hábitat", getHabitat(),
+            "Habitat", getHabitat(),
             "Sonido", getSonido(),
             "Consumo diario", consumoDiario
         );
