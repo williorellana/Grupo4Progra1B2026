@@ -2,12 +2,11 @@ package zoologico;
 
 /**
  *
- * @author willi
+ * @author Kevin Santizo
  */
 
 /**
  * Clase Reptil — hereda de Animal.
- * Aplica herencia y polimorfismo sobreescribiendo los métodos abstractos.
  */
 public class Reptil extends Animal {
 
@@ -40,13 +39,13 @@ public class Reptil extends Animal {
     public String getTipoAnimal(){return "Reptil";}
 
     @Override
-    public String getTipoDieta(){return "Carnívora";}
+    public String getTipoDieta(){return "Carnivora";}
 
     @Override
     public String getSonido(){return "Gruñido o bramido";}
 
     @Override
-    public String getHabitat(){return "Pantano o río";}
+    public String getHabitat(){return "Pantano o rio";}
 
     @Override
     public String toString() {
