@@ -45,7 +45,7 @@ public class Ave extends Animal {
 
     @Override
     public String getTipoDieta() {
-        return "Granívora / Insectívora";
+        return "Granivora / Insectívora";
     }
 
     @Override
@@ -55,7 +55,7 @@ public class Ave extends Animal {
 
     @Override
     public String getHabitat() {
-        return "Árbol / Cielo abierto";
+        return "Arbol / Cielo abierto";
     }
 
     @Override
