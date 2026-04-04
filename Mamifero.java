@@ -2,7 +2,7 @@ package zoologico;
 
 /**
  *
- * @author willi
+ * @author Juan Pablo
  */
 public class Mamifero extends Animal {
 
@@ -32,10 +32,10 @@ public class Mamifero extends Animal {
 
     // Polimorfismo
     @Override
-    public String getTipoAnimal(){return "Mamífero";}
+    public String getTipoAnimal(){return "Mamifero";}
 
     @Override
-    public String getTipoDieta(){return "Carnívora / Omnívora";}
+    public String getTipoDieta(){return "Carnivora / Omnivora";}
 
     @Override
     public String getSonido(){ return "Rugido / Gruñido";}
