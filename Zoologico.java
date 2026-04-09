@@ -16,16 +16,16 @@ import java.util.ArrayList;
  */
 public class Zoologico {
 
-    // ── Atributos ─────────────────────────────────────────────────
+    // Atributos
     private ArrayList<Animal> animales;
     private static final String CSV_FILE = "zoo_aurora.csv";
 
-    // ── Constructor ───────────────────────────────────────────────
+    // Constructor
     public Zoologico() {
         this.animales = new ArrayList<>();
     }
 
-    // ── Verificadores de tipo registrado ──────────────────────────
+    // Verificadores de tipo registrado
     public boolean tieneMamifero() {
         for (Animal a : animales) {
             if (a instanceof Mamifero) return true;
@@ -47,7 +47,7 @@ public class Zoologico {
         return false;
     }
 
-    // ── Operaciones básicas ───────────────────────────────────────
+    // Operaciones básicas
     public void agregarAnimal(Animal animal) {
         animales.add(animal);
     }
