@@ -1,19 +1,32 @@
 package zoologico;
 
 import java.util.Scanner;
+import java.io.PrintStream;
 
 /**
  *
  * @author GRUPO 4
  */
-
 // SISTEMA DE GESTIÓN - ZOOLÓGICO LA AURORA 
 public class Main {
 
     // Scanner
-    private static final Scanner sc = new Scanner(System.in);
+    private static final Scanner sc = new Scanner(System.in, "UTF-8");
 
+    /*public static void main(String[] args) {
+        Zoologico zoo = new Zoologico();
+        mostrarBienvenida();
+        menuPrincipal(zoo);
+        sc.close();
+    }*/
     public static void main(String[] args) {
+        // 👇 Agrega esta línea aquí, al inicio
+        try {
+            System.setOut(new PrintStream(System.out, true, "UTF-8"));
+            System.setIn(new java.io.BufferedInputStream(System.in));
+        } catch (Exception e) {
+        }
+
         Zoologico zoo = new Zoologico();
         mostrarBienvenida();
         menuPrincipal(zoo);
@@ -25,14 +38,14 @@ public class Main {
         boolean salir = false;
 
         while (!salir) {
-            titulo("-- Menu principal --");
+            titulo("-- Menú principal --");
             System.out.println();
             System.out.println("1. Zoo");
             System.out.println("2. Fase II");
             System.out.println("3. Fase III");
             System.out.println("4. Salir");
             System.out.println();
-            String opcion = leerTexto("Seleccione una opcion: ");
+            String opcion = leerTexto("Seleccione una opción: ");
 
             switch (opcion) {
                 case "1":
@@ -60,14 +73,14 @@ public class Main {
         boolean volver = false;
 
         while (!volver) {
-            titulo("-- Gestion de animales --");
+            titulo("-- Gestión de animales --");
             System.out.println();
             System.out.println("1. Agregar nuevo animal");
             System.out.println("2. Ver todos los animales del Zoo");
             System.out.println("3. Exportar datos a CSV");
-            System.out.println("4. Volver al menu principal");
+            System.out.println("4. Volver al menú principal");
             System.out.println();
-            String opcion = leerTexto("Seleccione una opcion: ");
+            String opcion = leerTexto("Seleccione una opción: ");
 
             switch (opcion) {
                 case "1":
@@ -89,60 +102,31 @@ public class Main {
         }
     }
 
-    // Agregar animal
+// Agregar animal
     private static void agregarAnimal(Zoologico zoo) {
         titulo("-- Agregar nuevo animal --");
 
-        // Determinar tipos disponibles (solo uno de cada tipo)
-        boolean hayMamifero = zoo.tieneMamifero();
-        boolean hayAve = zoo.tieneAve();
-        boolean hayReptil = zoo.tieneReptil();
-
-        if (hayMamifero && hayAve && hayReptil) {
-            System.out.println("Ya se registro un animal de cada tipo.");
-            System.out.println("(Mamífero, Ave y Reptil ya están registrados)");
-            pausa();
-            return;
-        }
-
         System.out.println("Tipos disponibles: ");
-        if (!hayMamifero) {
-            System.out.println("1. Mamifero");
-        }
-        if (!hayAve) {
-            System.out.println("2. Ave");
-        }
-        if (!hayReptil) {
-            System.out.println("3. Reptil");
-        }
+        System.out.println();
+        System.out.println("1. Mamífero");
+        System.out.println("2. Ave");
+        System.out.println("3. Reptil");
         System.out.println();
         String tipo = leerTexto("Seleccione el tipo de animal: ");
 
         try {
             switch (tipo) {
                 case "1":
-                    if (hayMamifero) {
-                        System.out.println("Ya existe un mamífero registrado.");
-                    } else {
-                        registrarMamifero(zoo);
-                    }
+                    registrarMamifero(zoo);
                     break;
                 case "2":
-                    if (hayAve) {
-                        System.out.println("Ya existe un ave registrada.");
-                    } else {
-                        registrarAve(zoo);
-                    }
+                    registrarAve(zoo);
                     break;
                 case "3":
-                    if (hayReptil) {
-                        System.out.println("Ya existe un reptil registrado.");
-                    } else {
-                        registrarReptil(zoo);
-                    }
+                    registrarReptil(zoo);
                     break;
                 default:
-                    System.out.println("Tipo animal invalido.");
+                    System.out.println("Tipo animal inválido.");
                     pausa();
                     return;
             }
@@ -232,7 +216,6 @@ public class Main {
         String pico = leerTexto("Tipo de pico: ");
         boolean vista = leerBooleano("Vista excelente? (S/N): ");
         String plumas = leerTexto("Tipo de plumaje: ");
-        
 
         Ave ave = new Ave(nombre, especie, edad, peso, consumo, pico, vista, plumas);
         zoo.agregarAnimal(ave);
@@ -245,14 +228,14 @@ public class Main {
         String especie = leerTexto("Tipo de reptil: ");
         int edad = leerEntero("Edad (años): ", 0, 200);
         double peso = leerDouble("Peso (lb): ", 0.01);
-        double consumo = leerDouble("Consumo diario (lb/día): ", 0.01);
-        boolean venenoso = leerBooleano("¿Es venenoso? (S/N): ");
+        double consumo = leerDouble("Consumo diario (lb/dia): ", 0.01);
+        boolean venenoso = leerBooleano("Es venenoso? (S/N): ");
         double longitud = leerDouble("Longitud (cm): ", 1.0);
         boolean mandibulaPoderosa = leerBooleano("¿Tiene una mandibula poderosa? (S/N): ");
         boolean excelenteNadador = leerBooleano("¿Es un buen nadador? (S/N): ");
 
-        Reptil r = new Reptil(nombre, especie, edad, peso, consumo, venenoso, 
-                              longitud, mandibulaPoderosa, excelenteNadador);
+        Reptil r = new Reptil(nombre, especie, edad, peso, consumo, venenoso,
+                longitud, mandibulaPoderosa, excelenteNadador);
         zoo.agregarAnimal(r);
         System.out.println("\n Reptil '" + nombre + "' registrado exitosamente.");
     }
@@ -364,7 +347,7 @@ public class Main {
 
     private static void mostrarDespedida() {
         System.out.println();
-        System.out.println("La Aurora los despide con cariño y esperamos");
+        System.out.println("Nos vemos pronto.");
         System.out.println();
     }
 
@@ -389,7 +372,7 @@ public class Main {
         }
         System.out.printf("  %-12s: %s (%d)%n", tipo, barra.toString(), cantidad);
     }
-    
+
     // Manejo de excepciones
     private static String leerTexto(String prompt) {
         String valor;
