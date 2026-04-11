@@ -20,7 +20,6 @@ public class Main {
         sc.close();
     }*/
     public static void main(String[] args) {
-        // 👇 Agrega esta línea aquí, al inicio
         try {
             System.setOut(new PrintStream(System.out, true, "UTF-8"));
             System.setIn(new java.io.BufferedInputStream(System.in));
