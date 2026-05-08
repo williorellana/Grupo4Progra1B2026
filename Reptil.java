@@ -1,27 +1,24 @@
 package zoologico;
 
 /**
+ * Subclase Reptil — hereda de Animal.
  *
- * @author Kevin Santizo
+ * @author GRUPO 4
  */
+public class Reptil extends Animal{
 
-/**
- * Clase Reptil — hereda de Animal.
- */
-public class Reptil extends Animal {
-
-    // Atributos
+    // Atributos específicos
     private boolean esVenenoso;
-    private double  longitud;   // longitud en m
+    private double longitud;
     private boolean mandibulaPoderosa;
     private boolean excelenteNadador;
 
     // Constructor
-    public Reptil(String nombre, String especie, int edad, double peso,
-                  double consumoDiario, boolean esVenenoso, 
-                  double longitud, boolean mandibulaPoderosa,
-                  boolean excelenteNadador) {
-        super(nombre, especie, edad, peso, consumoDiario);
+    public Reptil(long idAnimal, String nombre, String especie, int años,
+            double peso, double consumoDiario,
+            boolean esVenenoso, double longitud,
+            boolean mandibulaPoderosa, boolean excelenteNadador){
+        super(idAnimal, nombre, especie, años, peso, consumoDiario);
         this.esVenenoso = esVenenoso;
         this.longitud = longitud;
         this.mandibulaPoderosa = mandibulaPoderosa;
@@ -29,41 +26,62 @@ public class Reptil extends Animal {
     }
 
     // Getters
-    public boolean esVenenoso(){return esVenenoso;}
-    public double getLongitud(){return longitud;}
-    public boolean getMandibula(){return mandibulaPoderosa;}
-    public boolean getNadador(){return excelenteNadador;}
+    public boolean esVenenoso(){
+        return esVenenoso;
+    }
+
+    public double getLongitud(){
+        return longitud;
+    }
+
+    public boolean getMandibulaPoderosa(){
+        return mandibulaPoderosa;
+    }
+
+    public boolean getExcelenteNadador(){
+        return excelenteNadador;
+    }
 
     // Polimorfismo
     @Override
-    public String getTipoAnimal(){return "Reptil";}
+    public String getTipoAnimal(){
+        return "Reptil";
+    }
 
     @Override
-    public String getTipoDieta(){return "Carnivora";}
+    public String getTipoDieta(){
+        return "Carnivora";
+    }
 
     @Override
-    public String getSonido(){return "Gruñido o bramido";}
+    public String getSonido(){
+        return "Gruñido o bramido";
+    }
 
     @Override
-    public String getHabitat(){return "Pantano o rio";}
+    public String getHabitat(){
+        return "Pantano o rio";
+    }
 
     @Override
-    public String toString() {
+    public String getDatoEspecifico(){
+        return "Longitud: " + String.format("%.2f cm", longitud);
+    }
+
+    @Override
+    public String toString(){
         return super.toString() + String.format(
-            "\n  %-22s: %s\n  %-22s: %.2f cm",
-            "Venenoso",  esVenenoso ? "Sí" : "No",
-            "Longitud",  longitud,
-            "Mandibula poderosa", mandibulaPoderosa ? "Si" : "No",
-            "Excelente nadador", excelenteNadador ? "Si" : "No"
+                "\n  %-22s: %s\n  %-22s: %.2f cm\n  %-22s: %s\n  %-22s: %s",
+                "Venenoso", esVenenoso ? "Si" : "No",
+                "Longitud", longitud,
+                "Mandibula poderosa", mandibulaPoderosa ? "Si" : "No",
+                "Excelente nadador", excelenteNadador ? "Si" : "No"
         );
     }
 
-    // CSV
     @Override
-    public String toCSVRow() {
-        return super.toCSVRow() + String.format(",,,,,,%s,%.2f",
-            esVenenoso ? "Sí" : "No", longitud,
-            mandibulaPoderosa ? "Si" : "No", 
-            excelenteNadador ? "Si" : "No");
+    public String toCSVRow(){
+        return super.toCSVRow() + "," + (esVenenoso ? "Si" : "No") + "," + longitud
+                + "," + (mandibulaPoderosa ? "Si" : "No") + "," + (excelenteNadador ? "Si" : "No");
     }
 }
