@@ -1,79 +1,78 @@
 package zoologico;
 
 /**
+ * Subclase Ave — hereda de Animal.
  *
- * @author willi
- */
-
-/*
- * Clase Ave — hereda de Animal.
+ * @author GRUPO 4
  */
 public class Ave extends Animal {
 
-    // Atributos
+    // Atributos específicos
     private String pico;
     private boolean vista;
     private String plumas;
 
     // Constructor
-    public Ave(String nombre, String especie, int edad, double peso,
-            double consumoDiario, String pico, boolean vista, String plumas) {
-        super(nombre, especie, edad, peso, consumoDiario);
+    public Ave(long idAnimal, String nombre, String especie, int años,
+            double peso, double consumoDiario,
+            String pico, boolean vista, String plumas){
+        super(idAnimal, nombre, especie, años, peso, consumoDiario);
         this.pico = pico;
         this.vista = vista;
         this.plumas = plumas;
     }
 
     // Getters
-    public String pico() {
+    public String getPico(){
         return pico;
     }
 
-    public boolean vista() {
+    public boolean getVista(){
         return vista;
     }
 
-    public String plumas() {
+    public String getPlumas(){
         return plumas;
     }
 
     // Polimorfismo
     @Override
-    public String getTipoAnimal() {
+    public String getTipoAnimal(){
         return "Ave";
     }
 
     @Override
-    public String getTipoDieta() {
-        return "Granivora / Insectívora";
+    public String getTipoDieta(){
+        return "Granivora / Insectivora";
     }
 
     @Override
-    public String getSonido() {
+    public String getSonido(){
         return "Canto / Chillido";
     }
 
     @Override
-    public String getHabitat() {
+    public String getHabitat(){
         return "Arbol / Cielo abierto";
     }
 
     @Override
-    public String toString() {
+    public String getDatoEspecifico(){
+        return "Pico: " + pico;
+    }
+
+    @Override
+    public String toString(){
         return super.toString() + String.format(
-                "\n  %-22s: %-22s:  %-22s:",
+                "\n  %-22s: %s\n  %-22s: %s\n  %-22s: %s",
                 "Pico", pico,
-                "Vista", vista ? "Si" : "No", 
-                "plumas", plumas
+                "Vista", vista ? "Si" : "No",
+                "Plumas", plumas
         );
     }
 
-    // CSV
     @Override
-    public String toCSVRow() {
-        return super.toCSVRow() + String.format(",,,,,,,%s,,", 
-                pico, 
-                vista ? "Si" : "No", 
-                plumas);
+    public String toCSVRow(){
+        return super.toCSVRow() + "," + pico + "," + (vista ? "Si" : "No") + "," + plumas;
     }
 }
