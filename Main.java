@@ -159,10 +159,10 @@ public class Main{
             int años = leerEntero("Edad (años): ", 0, 150);
             double peso = leerDouble("Peso (lb): ", 0.1);
             double consumo = leerDouble("Consumo diario (lb/día): ", 0.01);
-            String pelaje = leerTexto("Tipo de pelaje: ");
+            String pelaje = leerTexto("Tipo de pelaje (Liso/Lanoso/Corto): ");
             String tamaño = leerTexto("Tamaño (Grande/Mediano/Pequeño): ");
-            String fuerza = leerTexto("Nivel de fuerza: ");
-            String cazador = leerTexto("Cazador (S/N): ");
+            String fuerza = leerTexto("Nivel de fuerza (Mucha/Media/Poca): ");
+            String cazador = leerTexto("Es cazador? (S/N): ");
 
             Mamifero m = new Mamifero(id, nombre, especie, años, peso, consumo,
                     pelaje, tamaño, fuerza, cazador);
@@ -190,7 +190,7 @@ public class Main{
             double peso = leerDouble("Peso (lb): ", 0.01);
             double consumo = leerDouble("Consumo diario (lb/día): ", 0.01);
             String pico = leerTexto("Tipo de pico (Curvo/Ganchudo): ");
-            boolean vista = leerBooleano("¿Vista excelente? (S/N): ");
+            boolean vista = leerBooleano("Vista excelente? (S/N): ");
             String plumas = leerTexto("Tipo de plumaje (Cola/Vuelo/Semipluma): ");
 
             Ave ave = new Ave(id, nombre, especie, años, peso, consumo,
@@ -203,7 +203,7 @@ public class Main{
         pausa();
     }
 
-    // gregar Reptil
+    // agregar Reptil
     private static void fase2AgregarReptil(Zoologico zoo){
         titulo("-- Agregar Reptil --");
         if(zoo.estaLleno()){
@@ -218,10 +218,10 @@ public class Main{
             int años = leerEntero("Edad (años): ", 0, 200);
             double peso = leerDouble("Peso (lb): ", 0.01);
             double consumo = leerDouble("Consumo diario (lb/día): ", 0.01);
-            boolean venenoso = leerBooleano("¿Es venenoso? (S/N): ");
+            boolean venenoso = leerBooleano("Es venenoso? (S/N): ");
             double longitud = leerDouble("Longitud (cm): ", 1.0);
-            boolean mandibula = leerBooleano("¿Tiene mandíbula poderosa? (S/N): ");
-            boolean nadador = leerBooleano("¿Es excelente nadador? (S/N): ");
+            boolean mandibula = leerBooleano("Tiene mandíbula poderosa? (S/N): ");
+            boolean nadador = leerBooleano("Es excelente nadador? (S/N): ");
 
             Reptil r = new Reptil(id, nombre, especie, años, peso, consumo,
                     venenoso, longitud, mandibula, nadador);
@@ -573,12 +573,13 @@ public class Main{
         System.out.println();
     }
 
+    // Barra de distribucion de alimentos
     private static void imprimirBarra(String tipo, int cantidad){
         StringBuilder barra = new StringBuilder();
         for(int i = 0; i < cantidad * 10; i++){
-            barra.append("█");
+            //barra.append("█");
         }
-        System.out.printf("  %-12s: %s (%d)%n", tipo, barra.toString(), cantidad);
+        System.out.printf("  %-12s: %s %n", tipo, cantidad + " %");
     }
 
     private static void mostrarBienvenida(){
@@ -589,7 +590,7 @@ public class Main{
 
     private static void mostrarDespedida(){
         System.out.println();
-        System.out.println("Nos vemos pronto.");
+        System.out.println("Nos vemos pronto!!!.");
         System.out.println();
     }
 
