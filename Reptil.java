@@ -55,12 +55,12 @@ public class Reptil extends Animal{
 
     @Override
     public String getSonido(){
-        return "Gruñido o bramido";
+        return "Gruñido/Bramido";
     }
 
     @Override
     public String getHabitat(){
-        return "Pantano o rio";
+        return "Pantano/Rio";
     }
 
     @Override
