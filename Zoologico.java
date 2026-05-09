@@ -198,6 +198,7 @@ public class Zoologico{
             pw.println("# ZOOLOGICO LA AURORA - Reporte de Animales");
             pw.println("# Fecha de exportacion: " + fechaHora);
             pw.println("# Total de animales: " + cantidad);
+            System.out.println();
             pw.println("ID,Tipo,Nombre,Especie,Anos,Peso,Dieta,Habitat,ConsumoDiario,DatoExtra");
             for(int i = 0; i < cantidad; i++){
                 pw.println(animales[i].toCSVRow());
