@@ -44,7 +44,7 @@ public class Mamifero extends Animal {
     // Polimorfismo
     @Override
     public String getTipoAnimal(){
-        return "Mamifero";
+        return "Mamifero"; 
     }
 
     @Override
