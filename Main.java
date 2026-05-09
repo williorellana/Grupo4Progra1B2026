@@ -156,7 +156,7 @@ public class Main{
             long id = leerIdUnico(zoo);
             String nombre = leerTexto("Nombre: ");
             String especie = leerTexto("Tipo de mamifero: ");
-            int años = leerEntero("Edad (años): ", 0, 150);
+            int años = leerEntero("Edad del mamifero: ", 0, 150);
             double peso = leerDouble("Peso (lb): ", 0.1);
             double consumo = leerDouble("Consumo diario (lb/día): ", 0.01);
             String pelaje = leerTexto("Tipo de pelaje (Liso/Lanoso/Corto): ");
@@ -186,7 +186,7 @@ public class Main{
             long id = leerIdUnico(zoo);
             String nombre = leerTexto("Nombre: ");
             String especie = leerTexto("Tipo de ave: ");
-            int años = leerEntero("Edad (años): ", 0, 100);
+            int años = leerEntero("Edad del ave: ", 0, 100);
             double peso = leerDouble("Peso (lb): ", 0.01);
             double consumo = leerDouble("Consumo diario (lb/día): ", 0.01);
             String pico = leerTexto("Tipo de pico (Curvo/Ganchudo): ");
@@ -215,11 +215,11 @@ public class Main{
             long id = leerIdUnico(zoo);
             String nombre = leerTexto("Nombre: ");
             String especie = leerTexto("Tipo de reptil: ");
-            int años = leerEntero("Edad (años): ", 0, 200);
+            int años = leerEntero("Edad del reptil: ", 0, 200);
             double peso = leerDouble("Peso (lb): ", 0.01);
             double consumo = leerDouble("Consumo diario (lb/día): ", 0.01);
             boolean venenoso = leerBooleano("Es venenoso? (S/N): ");
-            double longitud = leerDouble("Longitud (cm): ", 1.0);
+            double longitud = leerDouble("Longitud: ", 1.0);
             boolean mandibula = leerBooleano("Tiene mandíbula poderosa? (S/N): ");
             boolean nadador = leerBooleano("Es excelente nadador? (S/N): ");
 
@@ -245,7 +245,7 @@ public class Main{
             long id = leerLong("Ingrese el ID a buscar: ");
             int pos = zoo.buscarPorId(id);
             if(pos == -1){
-                System.out.println("No se encontró ningún animal con ID " + id + ".");
+                System.out.println("No se encontró ningún animal con ese ID (1-10) " + id + ".");
             }else{
                 System.out.println("\n Animal encontrado en la posición " + pos + " del arreglo:\n");
                 System.out.println(zoo.getAnimal(pos));
@@ -458,7 +458,7 @@ public class Main{
             if(zoo.getCantidad() > 0){
                 Animal ultimo = zoo.getUltimoAnimal();
                 System.out.println("\n-- Cálculo de alimento --\n");
-                int dias = leerEntero("¿Para cuántos días calcular el consumo? (1-365): ", 1, 365);
+                int dias = leerEntero("Para cuántos días calcular el consumo? (1-365): ", 1, 365);
                 double total = ultimo.calcularAlimento(dias);
                 System.out.printf("Animal  : %s (%s)%n", ultimo.getNombre(), ultimo.getTipoAnimal());
                 System.out.printf("Consumo : %.2f lb/día%n", ultimo.getConsumoDiario());
@@ -558,7 +558,7 @@ public class Main{
         pausa();
     }
 
-    // Tablas CSV
+    // Tabla mostrar animales
     private static void imprimirTablaResumen(Zoologico zoo){
         System.out.println();
         System.out.printf("  %-6s | %-18s | %-5s | %-10s | %s%n",
@@ -650,7 +650,7 @@ public class Main{
     // ID DUPLICADO
     private static long leerIdUnico(Zoologico zoo){
         while(true){
-            long id = leerLong("ID del animal (número positivo): ");
+            long id = leerLong("Identificador (número entero): ");
             if(id <= 0){
                 System.out.println("El ID debe ser mayor que 0.");
                 continue;
