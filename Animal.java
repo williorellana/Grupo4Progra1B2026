@@ -79,8 +79,7 @@ public abstract class Animal{
                 + "  %-22s: %s\n"
                 + "  %-22s: %s\n"
                 + "  %-22s: %s\n"
-                + "  %-22s: %.2f lb/dia\n"
-                + "  %-22s: %s",
+                + "  %-22s: %.2f lb/dia",
                 "ID", idAnimal,
                 "Tipo", getTipoAnimal(),
                 "Nombre", nombre,
@@ -90,8 +89,7 @@ public abstract class Animal{
                 "Dieta", getTipoDieta(),
                 "Habitat", getHabitat(),
                 "Sonido", getSonido(),
-                "Consumo diario", consumoDiario,
-                getDatoEspecifico().split(":")[0], getDatoEspecifico().contains(":") ? getDatoEspecifico().split(":", 2)[1].trim() : ""
+                "Consumo diario", consumoDiario
         );
     }
 
