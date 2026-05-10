@@ -144,7 +144,7 @@ public class Main{
         }
     }
 
-    // gregar Mamífero
+    // Agregar Mamífero
     private static void fase2AgregarMamifero(Zoologico zoo){
         titulo("-- Agregar Mamífero --");
         if(zoo.estaLleno()){
@@ -174,7 +174,7 @@ public class Main{
         pausa();
     }
 
-    // gregar Ave
+    // Agregar Ave
     private static void fase2AgregarAve(Zoologico zoo){
         titulo("-- Agregar Ave --");
         if(zoo.estaLleno()){
@@ -269,7 +269,7 @@ public class Main{
         if (indices.length == 0) {
             System.out.println("No se encontró ningún animal con nombre '" + nombre + "'.");
         }else{
-            System.out.println("\n Se encontraron " + indices.length + " animal(es):\n");
+            System.out.println("\n Se encontraron " + indices.length + " animales:\n");
             for(int idx : indices){
                 System.out.println("  ── Posición " + idx + " ─────────────────────────────────────");
                 System.out.println(zoo.getAnimal(idx));
@@ -403,7 +403,7 @@ public class Main{
         pausa();
     }
 
-    //  HELPERS
+    //  FASE 1
     private static void agregarAnimalSimple(Zoologico zoo){
         titulo("-- Agregar nuevo animal --");
         boolean hayM = zoo.tieneMamifero();
@@ -427,50 +427,56 @@ public class Main{
         System.out.println();
         String tipo = leerTexto("Seleccione el tipo: ");
 
-        try{
-            switch(tipo){
-                case "1":
-                    if(hayM){
-                        System.out.println("Ya existe un mamífero.");
-                    }else{
-                        registrarMamiferoSimple(zoo);
-                    }
-                    break;
-                case "2":
-                    if(hayA){
-                        System.out.println("Ya existe un ave.");
-                    }else{
-                        registrarAveSimple(zoo);
-                    }
-                    break;
-                case "3":
-                    if(hayR){
-                        System.out.println("Ya existe un reptil.");
-                    } else {
-                        registrarReptilSimple(zoo);
-                    }
-                    break;
-                default:
-                    System.out.println("Tipo inválido.");
-                    pausa();
-                    return;
-            }
-            if(zoo.getCantidad() > 0){
-                Animal ultimo = zoo.getUltimoAnimal();
-                System.out.println("\n-- Cálculo de alimento --\n");
-                int dias = leerEntero("Para cuántos días calcular el consumo? (1-365): ", 1, 365);
-                double total = ultimo.calcularAlimento(dias);
-                System.out.printf("Animal  : %s (%s)%n", ultimo.getNombre(), ultimo.getTipoAnimal());
-                System.out.printf("Consumo : %.2f lb/día%n", ultimo.getConsumoDiario());
-                System.out.printf("Días    : %d%n", dias);
-                System.out.printf("Total   : %.2f lb en %d día(s)%n", total, dias);
-            }
-        }catch(Exception e){
-            System.out.println("Error: " + e.getMessage());
-        }
-        pausa();
-    }
+            boolean registroExitoso = false;
 
+    try{
+        switch(tipo){
+            case "1":
+                if(hayM){
+                    System.out.println("Ya existe un mamífero.");
+                }else{
+                    registrarMamiferoSimple(zoo);
+                    registroExitoso = true;
+                }
+                break;
+            case "2":
+                if(hayA){
+                    System.out.println("Ya existe un ave.");
+                }else{
+                    registrarAveSimple(zoo);
+                    registroExitoso = true;
+                }
+                break;
+            case "3":
+                if(hayR){
+                    System.out.println("Ya existe un reptil.");
+                }else{
+                    registrarReptilSimple(zoo);
+                    registroExitoso = true;
+                }
+                break;
+            default:
+                System.out.println("Tipo inválido.");
+                pausa();
+                return;
+        }
+
+        if(registroExitoso){
+            Animal ultimo = zoo.getUltimoAnimal();
+            System.out.println("\n-- Cálculo de alimento --\n");
+            int dias = leerEntero("Para cuántos días calcular el consumo? (1-365): ", 1, 365);
+            double total = ultimo.calcularAlimento(dias);
+            System.out.printf("Animal  : %s (%s)%n", ultimo.getNombre(), ultimo.getTipoAnimal());
+            System.out.printf("Consumo : %.2f lb/día%n", ultimo.getConsumoDiario());
+            System.out.printf("Días    : %d%n", dias);
+            System.out.printf("Total   : %.2f lb en %d día(s)%n", total, dias);
+        }
+    }catch(Exception e){
+        System.out.println("Error: " + e.getMessage());
+    }
+    pausa();
+}
+    
     // registrar con id automático
     private static long generarId(Zoologico zoo){
         long id = zoo.getCantidad() + 1L;
